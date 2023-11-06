@@ -1,23 +1,25 @@
+from forum import Forum
+from générationSecret import genererSecretMultithread, extraireSecret
 from datetime import datetime, timedelta
-import time
-from forum import Forum  # Assurez-vous d'importer la classe Forum du module forum
 
-# Exemple d'utilisation
+def main():
+    canal = Forum()
+
+    nom1 = "Alice"
+    nom2 = "Bob"
+
+    duree_protocol = 10  # Durée de 60 secondes
+
+    # Génération du secret
+    genererSecretMultithread(canal, duree_protocol)
+
+    # Supposons que la génération commence maintenant
+    debut_protocol = datetime.now() - timedelta(seconds=duree_protocol)
+    fin_protocol = datetime.now()
+
+    # Extraction du secret
+    secret = extraireSecret(canal, debut_protocol.strftime("%Y-%m-%d %H:%M:%S"), fin_protocol.strftime("%Y-%m-%d %H:%M:%S"), [nom1, nom2])
+    print("Le secret partagé est :", secret)
+
 if __name__ == "__main__":
-    canal = Forum()  # Créez une instance de la classe Forum
-
-    # Poster quelques messages
-    canal.posterMessageAnonyme("Premier message")
-    time.sleep(1)  # Attendre 1 seconde
-    canal.posterMessageAnonyme("Deuxième message")
-    time.sleep(1)
-    canal.posterMessageAnonyme("Troisième message")
-
-    # Récupérer les messages dans l'intervalle
-    debut = (datetime.now() - timedelta(seconds=5)).strftime("%Y-%m-%d %H:%M:%S")
-    fin = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
-    messages = canal.recupererMessagesAnonymes(debut, fin)
-
-    print("Messages récupérés entre {} et {}:".format(debut, fin))
-    for msg in messages:
-        print(msg)
+    main()

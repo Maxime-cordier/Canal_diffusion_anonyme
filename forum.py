@@ -16,4 +16,3 @@ class Forum:
             msg for timestamp, msg in self.messages if debut <= timestamp <= fin
         ]
         return messages_dans_intervalle
-
