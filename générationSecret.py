@@ -34,10 +34,3 @@ def genererSecretMultithread(forum, duree_protocol):
 def extraireSecret(forum, debut_protocol, fin_protocol):
     messages = forum.recupererMessagesAnonymes(debut_protocol, fin_protocol)
     return messages
-    for message in messages:
-        if "Alice" in message:
-            print("null")
-            # Ceci est un exemple, la logique exacte pour générer le bit secret doit être définie
-            # secret += '0' if nom == "Alice" else '1'
-
-    return secret
