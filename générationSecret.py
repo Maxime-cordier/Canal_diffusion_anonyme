@@ -7,17 +7,17 @@ def posteMessage(forum, nom, autre_nom, fin):
     while datetime.now() < fin:
         bit = random.choice([0, 1])
         message = nom if bit == 0 else autre_nom
-        temps_attente = random.uniform(0.001, 0.01)  # Attente de 1 à 10 ms
+        temps_attente = random.uniform(0.1, 0.5)  # Attente de 1 à 10 ms
         time.sleep(temps_attente)
-        print(message + " from " + nom)
+        print(message + " from " + nom + " at " + str(datetime.now()))
         if (nom == "Alice") and (message == "Alice"):
-            forum.posterMessageAnonyme("0")
+            forum.posterMessageAnonyme(0)
         elif (nom == "Alice") and (message == "Bob"):
-            forum.posterMessageAnonyme("1")
+            forum.posterMessageAnonyme(1)
         elif (nom == "Bob") and (message == "Bob"):
-            forum.posterMessageAnonyme("0")
+            forum.posterMessageAnonyme(0)
         elif (nom == "Bob") and (message == "Alice"):
-            forum.posterMessageAnonyme("1")
+            forum.posterMessageAnonyme(1)
 
 def genererSecretMultithread(forum, duree_protocol):
     fin = datetime.now() + timedelta(seconds=duree_protocol)
@@ -31,10 +31,9 @@ def genererSecretMultithread(forum, duree_protocol):
     bob_thread.join()
 
 # Cette fonction devra être appelée pour les deux utilisateurs et comparer leurs messages
-def extraireSecret(forum, debut_protocol, fin_protocol, noms):
+def extraireSecret(forum, debut_protocol, fin_protocol):
     messages = forum.recupererMessagesAnonymes(debut_protocol, fin_protocol)
-    secret = ""
-
+    return messages
     for message in messages:
         if "Alice" in message:
             print("null")

@@ -8,7 +8,7 @@ def main():
     nom1 = "Alice"
     nom2 = "Bob"
 
-    duree_protocol = 10  # Durée de 60 secondes
+    duree_protocol = 5  # Durée de 60 secondes
 
     # Génération du secret
     genererSecretMultithread(canal, duree_protocol)
