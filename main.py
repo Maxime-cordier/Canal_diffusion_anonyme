@@ -13,10 +13,6 @@ def main():
     # Génération du secret
     genererSecretMultithread(canal, alice, bob, duree_protocol)
 
-    #print("Alice a envoyé les messages suivants :", alice.messages)
-    #print("Bob a envoyé les messages suivants :", bob.messages)
-
-
     # Supposons que la génération commence maintenant
     debut_protocol = datetime.now() - timedelta(seconds=duree_protocol)
     fin_protocol = datetime.now()
