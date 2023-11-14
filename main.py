@@ -4,7 +4,7 @@ from générationSecret import genererSecretMultithread, extraireSecret
 from datetime import datetime, timedelta
 
 def main():
-    
+
     canal = Forum()
     alice = Personnage("Alice")
     bob = Personnage("Bob")
@@ -13,8 +13,8 @@ def main():
     # Génération du secret
     genererSecretMultithread(canal, alice, bob, duree_protocol)
 
-    print("Alice a envoyé les messages suivants :", alice.messages)
-    print("Bob a envoyé les messages suivants :", bob.messages)
+    #print("Alice a envoyé les messages suivants :", alice.messages)
+    #print("Bob a envoyé les messages suivants :", bob.messages)
 
 
     # Supposons que la génération commence maintenant

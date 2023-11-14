@@ -14,7 +14,7 @@ def posteMessage(forum, personnage, autre_personnage, fin):
         forum.posterMessageAnonyme((message, message_time))
 
 def genererSecretMultithread(forum, personnage1, personnage2, duree_protocol):
-    
+
     fin = datetime.now() + timedelta(seconds=duree_protocol)
     alice_thread = Thread(target=posteMessage, args=(forum, personnage1, personnage2, fin))
     bob_thread = Thread(target=posteMessage, args=(forum, personnage2, personnage1, fin))
